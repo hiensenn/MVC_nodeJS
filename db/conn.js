@@ -1,9 +1,7 @@
 const { Sequelize } = require('sequelize')
-const sequelize = new Sequelize('nodemvc', 'root', '', {
-
+const sequelize = new Sequelize('nodemvc','root','', {    
     host: 'localhost',
-    dialect: 'mysql'
-
+    dialect: 'mysql',
 })
 
 try{
@@ -13,4 +11,4 @@ try{
     console.log(`não foi possível conectar: ${error}`)
 }
 
-exports.default = sequelize
+module.exports = sequelize
