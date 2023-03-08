@@ -6,6 +6,7 @@ const app = express()
 const conn = require('./db/conn')
 const Task = require('./models/Task')
 
+const tasksRoutes = require('./routes/tasksRoutes')
 
 app.engine('handlebars', exphbs.engine()) 
 
@@ -19,6 +20,10 @@ app.use(
 
 app.use(express.json())
 app.use(express.static('public'))
+
+app.use('/tasks', tasksRoutes) // mesmo nome do arquivo taskRoutes presente na pasta Routes, rota principal
+
+
 
 conn.sync().then(() => {
     app.listen(3000)
