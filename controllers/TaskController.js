@@ -14,14 +14,18 @@ module.exports = class TaskController{
             description: req.body.description,
             done: false,
         }
-        console.log(task)
+        
         //chamando a model Task
         await Task.create(task) //salvando objeto de tarefa
 
         res.redirect('/tasks') //redirecionando 
     }
 
-    static showTasks(req, res){
-        res.render('tasks/all') //nome do arquivo na pasta layouts dentro da pasta tasks
+    static async showTasks(req, res){
+
+        const tasks = await Task.findAll({raw: true}) //os dados virão de forma 'bruta' em em array 
+
+
+        res.render('tasks/all', {tasks}) //nome do arquivo na pasta layouts dentro da pasta tasks
     }
 }
