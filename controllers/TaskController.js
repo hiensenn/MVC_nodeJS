@@ -21,6 +21,16 @@ module.exports = class TaskController{
         res.redirect('/tasks') //redirecionando 
     }
 
+    static async removeTask(req, res){
+
+        const id = req.body.id
+
+        await Task.destroy({where: {id:id}})
+
+        res.redirect('/tasks')
+
+    }
+
     static async showTasks(req, res){
 
         const tasks = await Task.findAll({raw: true}) //os dados virão de forma 'bruta' em em array 
