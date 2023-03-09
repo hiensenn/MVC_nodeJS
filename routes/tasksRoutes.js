@@ -11,6 +11,8 @@ const TaskController = require('../controllers/TaskController')
 router.get('/add', TaskController.createTasks) // o createTasks está no arquivo TaskController.js
 router.post('/add', TaskController.createTasksSave) // salvando dados
 router.post('/remove', TaskController.removeTask) // removendo dados
+router.get('/edit/:id', TaskController.updateTask) // editando dados
+router.post('/edit', TaskController.updateTaskPost)
 router.get('/', TaskController.showTasks) // o showTasks está no arquivo TaskController.js
 
 module.exports = router
