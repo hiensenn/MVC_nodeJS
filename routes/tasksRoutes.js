@@ -9,6 +9,7 @@ const router = express.Router()
 const TaskController = require('../controllers/TaskController')
 
 router.get('/add', TaskController.createTasks) // o createTasks está no arquivo TaskController.js
+router.post('/add', TaskController.createTasksSave) // salvando dados
 router.get('/', TaskController.showTasks) // o showTasks está no arquivo TaskController.js
 
 module.exports = router
